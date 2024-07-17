@@ -10,7 +10,7 @@ const WeatherDaily = memo(({ detail }: { detail: Daily }) => {
       <img
         className="w-full"
         src={`${import.meta.env.VITE_API_IMG}/${detail.weather[0].icon}@2x.png`}
-        alt=""
+        alt="weather_icon"
       />
       <p className="mb-1 text-2xl font-bold">
         {new Date(detail.dt * 1000).toLocaleDateString("en-US", {
