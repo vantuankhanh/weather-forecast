@@ -15,11 +15,11 @@ yarn
   - Then add these variables:
 
 ```cmd
-KEY = appid=$API_KEY&
-DOMAIN = "https://openweathermap.org"
-URL_DATA = $DOMAIN/data/2.5
-VITE_API_ONECALL = $URL_DATA/onecall?$KEY
-VITE_API_FIND  = $URL_DATA/find?$KEY
+VITE_K = appid=$VITE_AK&
+VITE_DOMAIN = "https://openweathermap.org"
+VITE_URL_DATA = $DOMAIN/data/2.5
+VITE_API_ONECALL = $URL_DATA/onecall?$VITE_K
+VITE_API_FIND  = $URL_DATA/find?$VITE_K
 VITE_API_IMG = $DOMAIN/img/wn
 VITE_API_IMAGE_FLAGS = $DOMAIN/images/flags
 ```
