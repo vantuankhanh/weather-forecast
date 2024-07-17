@@ -53,6 +53,9 @@ export const reducer = createReducer(initialState, (build) => {
       state.isLoading = false;
       state.weatherDetail = payload;
     })
+    .addCase(getDetailWeather.rejected, (state) => {
+      state.isLoading = false;
+    })
 
     .addCase(clearDetail, (state) => {
       state.weatherDetail = undefined;

@@ -17,12 +17,16 @@ const SideMenu = () => {
     if (inputRef.current) {
       dispatch(clearDetail());
       e.preventDefault();
-      dispatch(setLoading(true));
-      const data: ILocationSearchModel = await getWeatherSearchCity(
-        inputRef.current.value
-      );
-      setCityList(data.list);
-      dispatch(setLoading(false));
+      try {
+        dispatch(setLoading(true));
+        const data: ILocationSearchModel = await getWeatherSearchCity(
+          inputRef.current.value
+        );
+        setCityList(data.list);
+        dispatch(setLoading(false));
+      } catch {
+        dispatch(setLoading(false));
+      }
     }
   };
 
