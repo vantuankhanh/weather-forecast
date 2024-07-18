@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { IWeatherCity } from "../models/WeatherModel";
+import { IWeatherResponse } from "../models/WeatherModel";
 import {
   clearDetail,
   getDetailWeather,
@@ -7,12 +7,12 @@ import {
 } from "../store/reducer/reducer";
 import { useAppDispatch } from "../store/store";
 
-const CitySelect = memo(({ item }: { item: IWeatherCity }) => {
+const CitySelect = memo(({ item }: { item: IWeatherResponse }) => {
   const dispatch = useAppDispatch();
 
   const onCityClick = () => {
     dispatch(clearDetail());
-    dispatch(getDetailWeather({ lat: item.coord.lat, lon: item.coord.lon }));
+    dispatch(getDetailWeather({ lat: item.lat, lon: item.lon }));
     dispatch(setName(item.name));
   };
 
@@ -26,25 +26,26 @@ const CitySelect = memo(({ item }: { item: IWeatherCity }) => {
           <img
             src={`${
               import.meta.env.VITE_API_IMAGE_FLAGS
-            }/${item.sys.country.toLowerCase()}.png`}
+            }/${item.country.toLowerCase()}.png`}
             alt="flag"
           />
           <h3 className="font-bold text-base">{item.name}</h3>
         </div>
-        <div>
-          <p className="mr-2 bg-amber-200 px-2 pt-0.5 pb-1.5 rounded-2xl font-bold">
-            {item.main.temp}°F
+        <div className="flex items-center">
+          <p className="mr-2 bg-amber-200 px-2 pt-0.5 pb-1.5 rounded-md font-bold">
+            {item.current.temp}°C
           </p>
         </div>
       </div>
 
       <div className="items-center leading-6">
         <p>
-          Temperature from {item.main.temp_min}° to {item.main.temp_max}°
+          Feels like: {item.current.feels_like}°C
           <br />
-          Wind {item.wind.speed}m/s. Clouds {item.clouds.all}%
+          Wind speed: {item.current.wind_speed}m/s. Clouds {item.current.clouds}
+          %
           <br />
-          Geo coords [{item.coord.lat}, {item.coord.lon}]
+          Geo coords: [{item.lat}, {item.lon}]
         </p>
       </div>
     </div>

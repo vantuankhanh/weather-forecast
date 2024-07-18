@@ -1,53 +1,114 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export interface ILocationSearchModel {
-  message: string;
-  cod: string;
-  count: number;
-  list: IWeatherCity[];
+import { ILocationCoord } from "./LocationCoord";
+
+export interface IWeatherResponse extends ILocationCoord {
+  lat: number;
+  lon: number;
+  timezone: string;
+  timezone_offset: number;
+  current: Current;
+  minutely: Minutely[];
+  hourly: Hourly[];
+  daily: Daily[];
 }
 
-export interface IWeatherCity {
-  id: number;
-  name: string;
-  coord: Coord;
-  main: Main;
+export interface Current {
   dt: number;
-  wind: Wind;
-  sys: Sys;
-  rain: any;
-  snow: any;
-  clouds: Clouds;
+  sunrise: number;
+  sunset: number;
+  temp: number;
+  feels_like: number;
+  pressure: number;
+  humidity: number;
+  dew_point: number;
+  uvi: number;
+  clouds: number;
+  visibility: number;
+  wind_speed: number;
+  wind_deg: number;
   weather: Weather[];
 }
 
-export interface Coord {
-  lat: number;
-  lon: number;
+export interface Weather {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
 }
 
-export interface Main {
+export interface Minutely {
+  dt: number;
+  precipitation: number;
+}
+
+export interface Hourly {
+  dt: number;
   temp: number;
   feels_like: number;
-  temp_min: number;
-  temp_max: number;
   pressure: number;
   humidity: number;
+  dew_point: number;
+  uvi: number;
+  clouds: number;
+  visibility: number;
+  wind_speed: number;
+  wind_deg: number;
+  wind_gust: number;
+  weather: Weather2[];
+  pop: number;
+  rain?: Rain;
 }
 
-export interface Wind {
-  speed: number;
-  deg: number;
+export interface Weather2 {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
 }
 
-export interface Sys {
-  country: string;
+export interface Rain {
+  "1h": number;
 }
 
-export interface Clouds {
-  all: number;
+export interface Daily {
+  dt: number;
+  sunrise: number;
+  sunset: number;
+  moonrise: number;
+  moonset: number;
+  moon_phase: number;
+  summary: string;
+  temp: Temp;
+  feels_like: FeelsLike;
+  pressure: number;
+  humidity: number;
+  dew_point: number;
+  wind_speed: number;
+  wind_deg: number;
+  wind_gust: number;
+  weather: Weather3[];
+  clouds: number;
+  pop: number;
+  rain: number;
+  uvi: number;
 }
 
-export interface Weather {
+export interface Temp {
+  day: number;
+  min: number;
+  max: number;
+  night: number;
+  eve: number;
+  morn: number;
+}
+
+export interface FeelsLike {
+  day: number;
+  night: number;
+  eve: number;
+  morn: number;
+}
+
+export interface Weather3 {
   id: number;
   main: string;
   description: string;

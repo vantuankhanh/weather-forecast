@@ -16,12 +16,13 @@ yarn
 
 ```cmd
 VITE_K = appid=$VITE_AK&
-VITE_DOMAIN = "https://openweathermap.org"
-VITE_URL_DATA = $DOMAIN/data/2.5
-VITE_API_ONECALL = $URL_DATA/onecall?$VITE_K
-VITE_API_FIND  = $URL_DATA/find?$VITE_K
-VITE_API_IMG = $DOMAIN/img/wn
-VITE_API_IMAGE_FLAGS = $DOMAIN/images/flags
+VITE_DOMAIN_API = https://api.openweathermap.org
+VITE_URL_DATA = $VITE_DOMAIN_API/data/3.0
+VITE_API_ONECALL = $VITE_URL_DATA/onecall?$VITE_K
+VITE_URL_GEO = $VITE_DOMAIN_API/geo/1.0
+VITE_API_GEO_DIRECT  = $VITE_URL_GEO/direct?$VITE_K
+VITE_API_IMG = https://openweathermap.org/img/wn
+VITE_API_IMAGE_FLAGS = https://openweathermap.org/images/flags
 ```
 
 You can change the version of your API key.

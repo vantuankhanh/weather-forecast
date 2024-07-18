@@ -17,7 +17,7 @@ const WeatherDaily = memo(({ detail }: { detail: Daily }) => {
           weekday: "short",
         })}
       </p>
-      <p className="text-sm font-semibold">{detail.temp.max}°</p>
+      <p className="text-sm font-semibold">{detail.temp.max}°C</p>
     </div>
   );
 });

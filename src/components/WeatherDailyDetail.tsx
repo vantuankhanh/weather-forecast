@@ -36,17 +36,17 @@ const WeatherDailyDetail = memo(({ detail }: { detail: Daily }) => {
         </div>
         <div className="mr-6">
           <DetailHeader str="Tempurature" />
-          <DetailChild str={`Day: ${detail.temp.day}°`} />
-          <DetailChild str={`Min: ${detail.temp.min}°`} />
-          <DetailChild str={`Max: ${detail.temp.max}°`} />
-          <DetailChild str={`Night: ${detail.temp.night}°`} />
+          <DetailChild str={`Day: ${detail.temp.day}°C`} />
+          <DetailChild str={`Min: ${detail.temp.min}°C`} />
+          <DetailChild str={`Max: ${detail.temp.max}°C`} />
+          <DetailChild str={`Night: ${detail.temp.night}°C`} />
         </div>
         <div className="mr-6">
           <DetailHeader str="Feels like" />
-          <DetailChild str={`Day: ${detail.feels_like.day}°`} />
-          <DetailChild str={`Night: ${detail.feels_like.night}°`} />
-          <DetailChild str={`Evening: ${detail.feels_like.eve}°`} />
-          <DetailChild str={`Morning: ${detail.feels_like.morn}°`} />
+          <DetailChild str={`Day: ${detail.feels_like.day}°C`} />
+          <DetailChild str={`Night: ${detail.feels_like.night}°C`} />
+          <DetailChild str={`Evening: ${detail.feels_like.eve}°C`} />
+          <DetailChild str={`Morning: ${detail.feels_like.morn}°C`} />
         </div>
         <div className="mr-6">
           <DetailHeader str="Other" />

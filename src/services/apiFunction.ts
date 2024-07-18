@@ -2,21 +2,31 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { toast } from "react-toastify";
 
-export const getAPI = async (
-  url: string,
-  errorMessage = "",
-  configAPI: AxiosRequestConfig<any> | null = null
-) =>
+interface IAPIFunctionOptionProps {
+  messageAPI?: boolean;
+  messageSuccess?: string;
+  messageFail?: string;
+  configAPI?: AxiosRequestConfig<any>;
+}
+
+export const getAPI = async (url: string, option?: IAPIFunctionOptionProps) =>
   await axios
-    .get(url, { timeout: 15000, ...configAPI })
+    .get(url, { ...option?.configAPI })
     .then((res) => {
       if (res.status >= 200 && res.status < 300) {
+        option?.messageSuccess &&
+          toast.success(
+            option.messageSuccess || (option.messageAPI && res.data.message)
+          );
         return res.data;
       } else {
-        toast.error(errorMessage || "Something went wrong");
-        throw Error(errorMessage || "Something went wrong");
+        toast.error(
+          option?.messageFail || res.data.message || "Something went wrong"
+        );
+        return false;
       }
     })
     .catch((error) => {
-      toast.error(errorMessage || error);
+      toast.error(option?.messageFail || error.response?.data.message);
+      return false;
     });
